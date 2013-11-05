@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="12px"
+        android:text="hello"
+        android:textSize="48px" />
+
+    <EditText
+        android:id="@+id/value1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="hint1"
+        android:inputType="numberDecimal"
+        android:textSize="48px" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/value2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="hint2"
+        android:inputType="numberDecimal"
+        android:textSize="48px" >
+    </EditText>
+
+    <FrameLayout
+        android:id="@+id/FrameLayout01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:padding="12px" >
+
+        <LinearLayout
+            android:id="@+id/LinearLayout02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:orientation="horizontal"
+            android:padding="4px" >
+
+            <TextView
+                android:id="@+id/resultLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="resultLabel"
+                android:textSize="48px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16px"
+                android:textSize="48px"
+                android:textStyle="bold" >
+            </TextView>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout03"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/addValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add"
+            android:textSize="32px" >
+        </Button>
+
+        <Button
+            android:id="@+id/multiplyValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="multiply"
+            android:textSize="32px" >
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>
