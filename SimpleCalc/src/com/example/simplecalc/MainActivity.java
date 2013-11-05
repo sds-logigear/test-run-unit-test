@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         final String LOG_TAG = "MainScreen";
@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
                     Integer answer = val1 + val2;
                     result.setText(answer.toString());
                 } catch (Exception e) {
-                    Log.e(LOG_TAG, "Failed to add numbers", e);
+                    Log.e(LOG_TAG, "Failed to add numbers ", e);
                 }
             }
         });
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
                     Integer answer = val1 * val2;
                     result.setText(answer.toString());
                 } catch (Exception e) {
-                    Log.e(LOG_TAG, "Failed to multiply numbers", e);
+                    Log.e(LOG_TAG, "Failed to multiply numbers ", e);
                 }
             }
         });
