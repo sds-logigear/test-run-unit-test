@@ -6,10 +6,10 @@ import com.example.simplecalc.R;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.TextView;
 
-public class MathValidation extends ActivityInstrumentationTestCase2<MainActivity> {
+public class MathTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private TextView result;
 
-    public MathValidation() {
+    public MathTest() {
         super("com.example.simplecalc", MainActivity.class);
     }
 

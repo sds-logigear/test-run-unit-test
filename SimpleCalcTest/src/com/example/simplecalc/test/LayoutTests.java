@@ -39,7 +39,7 @@ public class LayoutTests extends ActivityInstrumentationTestCase2<MainActivity> 
 
         Rect outRect = new Rect();
         addValues.getDrawingRect(outRect);
-
+       
         assertTrue("Add button off the right of the screen",
                 fullWidth + mainLayoutLocation[0] > outRect.width() + viewLocation[0]);
         assertTrue("Add button off the bottom of the screen",
