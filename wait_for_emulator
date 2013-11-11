@@ -12,6 +12,6 @@ until [[ "$bootanim" =~ "stopped" ]]; do
       fi
    fi
    sleep 1
-   echo "adb shell wm size 480x800"
 done
+adb shell wm size 480x800
 echo "Done"
