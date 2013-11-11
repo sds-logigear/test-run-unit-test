@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "hung"
 bootanim=""
 failcounter=0
 until [[ "$bootanim" =~ "stopped" ]]; do
@@ -13,5 +12,6 @@ until [[ "$bootanim" =~ "stopped" ]]; do
       fi
    fi
    sleep 1
+   echo "adb shell wm size 480x800"
 done
 echo "Done"
