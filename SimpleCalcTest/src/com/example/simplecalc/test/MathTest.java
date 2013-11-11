@@ -1,5 +1,7 @@
 package com.example.simplecalc.test;
 
+import junit.framework.Assert;
+
 import com.example.simplecalc.MainActivity;
 import com.example.simplecalc.R;
 
@@ -26,7 +28,6 @@ public class MathTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private static final String NUMBER_NEG_22 = "MINUS 2 2 ENTER ";
 
     private static final String ADD_RESULT = "98";
-    private static final String ADD_DECIMAL_RESULT = "79.5";
     private static final String ADD_NEGATIVE_RESULT = "52";
     private static final String MULTIPLY_RESULT = "1776";
 
@@ -49,9 +50,10 @@ public class MathTest extends ActivityInstrumentationTestCase2<MainActivity> {
     public void testAddDecimalValues() {
         sendKeys(NUMBER_5_DOT_5 + NUMBER_74 + "ENTER");
 
-        String mathResult = result.getText().toString();
-        assertTrue("Add result should be " + ADD_DECIMAL_RESULT + " but was " + mathResult,
-                mathResult.equals(ADD_DECIMAL_RESULT));
+        String actualMessage = result.getText().toString();
+        String expectedMessage = String.format("Cannot parse number to integer");
+        assertTrue("Expected message should be " + expectedMessage + " but was " + actualMessage,
+                actualMessage.equals(expectedMessage));
     }
 
     public void testSubtractValues() {
@@ -69,5 +71,4 @@ public class MathTest extends ActivityInstrumentationTestCase2<MainActivity> {
         assertTrue("Multiply result should be " + MULTIPLY_RESULT + " but was " + mathResult,
                 mathResult.equals(MULTIPLY_RESULT));
     }
-
 }

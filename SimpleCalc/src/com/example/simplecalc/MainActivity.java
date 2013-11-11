@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-	
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         final String LOG_TAG = "MainScreen";
@@ -26,7 +26,8 @@ public class MainActivity extends Activity {
                     int val2 = Integer.parseInt(value2.getText().toString());
                     Integer answer = val1 + val2;
                     result.setText(answer.toString());
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
+                    result.setText("Cannot parse number to integer");
                     Log.e(LOG_TAG, "Failed to add numbers ", e);
                 }
             }
