@@ -22,12 +22,11 @@ public class MainActivity extends Activity {
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
-                    int val1 = Integer.parseInt(value1.getText().toString());
-                    int val2 = Integer.parseInt(value2.getText().toString());
-                    Integer answer = val1 + val2;
+                    double val1 = Double.parseDouble(value1.getText().toString());
+                    double val2 = Double.parseDouble(value2.getText().toString());
+                    Double answer = val1 + val2;
                     result.setText(answer.toString());
                 } catch (NumberFormatException e) {
-                    result.setText("Cannot parse number to integer");
                     Log.e(LOG_TAG, "Failed to add numbers ", e);
                 }
             }
@@ -36,9 +35,9 @@ public class MainActivity extends Activity {
         multiplyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
-                    int val1 = Integer.parseInt(value1.getText().toString());
-                    int val2 = Integer.parseInt(value2.getText().toString());
-                    Integer answer = val1 * val2;
+                    double val1 = Double.parseDouble(value1.getText().toString());
+                    double val2 = Double.parseDouble(value2.getText().toString());
+                    Double answer = val1 * val2;
                     result.setText(answer.toString());
                 } catch (Exception e) {
                     Log.e(LOG_TAG, "Failed to multiply numbers ", e);

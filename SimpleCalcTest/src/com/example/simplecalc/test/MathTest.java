@@ -1,7 +1,5 @@
 package com.example.simplecalc.test;
 
-import junit.framework.Assert;
-
 import com.example.simplecalc.MainActivity;
 import com.example.simplecalc.R;
 
@@ -24,12 +22,17 @@ public class MathTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     private static final String NUMBER_24 = "2 4 ENTER ";
     private static final String NUMBER_74 = "7 4 ENTER ";
-    private static final String NUMBER_5_DOT_5 = "5 PERIOD 5 ENTER ";
+    private static final String NUMBER_5_DOT_5 = "5 PERIOD 8 ENTER ";
     private static final String NUMBER_NEG_22 = "MINUS 2 2 ENTER ";
+    private static final String NUMBER_0 = "0 ENTER ";
 
-    private static final String ADD_RESULT = "98";
-    private static final String ADD_NEGATIVE_RESULT = "52";
-    private static final String MULTIPLY_RESULT = "1776";
+    private static final String ADD_RESULT = "98.0";
+    private static final String ADD_NEGATIVE_RESULT = "52.0";
+    private static final String ADD_DECIMAL_RESULT = "79.8";
+    private static final String MULTIPLY_RESULT = "1776.0";
+    private static final String MULTIPLY_DECIMAL_RESULT = "429.2";
+    private static final String MULTIPLY_NEGATIVE_RESULT = "-1628.0";
+    private static final String MULTIPLY_ZERO_RESULT = "0.0";
 
     public void testAddValues() {
         // we use sendKeys instead of setText so it goes through entry
@@ -37,38 +40,51 @@ public class MathTest extends ActivityInstrumentationTestCase2<MainActivity> {
         sendKeys(NUMBER_24);
         // now on value2 entry
         sendKeys(NUMBER_74);
-
         // now on Add button
         sendKeys("ENTER");
-
         // get result
         String mathResult = result.getText().toString();
-        assertTrue("Add result should be 98 " + ADD_RESULT + " but was " + mathResult,
-                mathResult.equals(ADD_RESULT));
+        compareValue(ADD_RESULT, mathResult);
     }
 
     public void testAddDecimalValues() {
         sendKeys(NUMBER_5_DOT_5 + NUMBER_74 + "ENTER");
-
-        String actualMessage = result.getText().toString();
-        String expectedMessage = String.format("Cannot parse number to integer");
-        assertTrue("Expected message should be " + expectedMessage + " but was " + actualMessage,
-                actualMessage.equals(expectedMessage));
+        String mathResult = result.getText().toString();
+        compareValue(ADD_DECIMAL_RESULT, mathResult);
     }
 
-    public void testSubtractValues() {
+    public void testAddSubtractValues() {
         sendKeys(NUMBER_NEG_22 + NUMBER_74 + "ENTER");
-
         String mathResult = result.getText().toString();
-        assertTrue("Add result should be " + ADD_NEGATIVE_RESULT + " but was " + mathResult,
-                mathResult.equals(ADD_NEGATIVE_RESULT));
+        compareValue(ADD_NEGATIVE_RESULT, mathResult);
     }
 
     public void testMultiplyValues() {
         sendKeys(NUMBER_24 + NUMBER_74 + " DPAD_RIGHT ENTER");
-
         String mathResult = result.getText().toString();
-        assertTrue("Multiply result should be " + MULTIPLY_RESULT + " but was " + mathResult,
-                mathResult.equals(MULTIPLY_RESULT));
+        compareValue(MULTIPLY_RESULT, mathResult);
+    }
+
+    public void testMultiplyDecimalValues() {
+        sendKeys(NUMBER_5_DOT_5 + NUMBER_74 + " DPAD_RIGHT ENTER");
+        String mathResult = result.getText().toString();
+        compareValue(MULTIPLY_DECIMAL_RESULT, mathResult);
+    }
+
+    public void testMultiplySubtractValues() {
+        sendKeys(NUMBER_NEG_22 + NUMBER_74 + " DPAD_RIGHT ENTER");
+        String mathResult = result.getText().toString();
+        compareValue(MULTIPLY_NEGATIVE_RESULT, mathResult);
+    }
+
+    public void testMultiptyZeroValues() {
+        sendKeys(NUMBER_0 + NUMBER_74 + " DPAD_RIGHT ENTER");
+        String mathResult = result.getText().toString();
+        compareValue(MULTIPLY_ZERO_RESULT, mathResult);
+    }
+
+    private void compareValue(String expectedValue, String actualValue) {
+        assertTrue("Add result should be " + expectedValue + " but was " + actualValue,
+                actualValue.equals(expectedValue));
     }
 }
