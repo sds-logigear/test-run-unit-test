@@ -7,12 +7,15 @@ import android.graphics.Rect;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class LayoutTests extends ActivityInstrumentationTestCase2<MainActivity> {
 
     private Button addValues;
     private Button multiplyValues;
     private View mainLayout;
+    private EditText value1;
+    private EditText value2;
 
     public LayoutTests() {
         super("com.example.simplecalc", MainActivity.class);
@@ -25,6 +28,8 @@ public class LayoutTests extends ActivityInstrumentationTestCase2<MainActivity> 
         addValues = (Button) mainActivity.findViewById(R.id.addValues);
         multiplyValues = (Button) mainActivity.findViewById(R.id.multiplyValues);
         mainLayout = (View) mainActivity.findViewById(R.id.mainLayout);
+        value1 = (EditText) mainActivity.findViewById(R.id.value1);
+        value2 = (EditText) mainActivity.findViewById(R.id.value2);
 
     }
 
@@ -39,7 +44,7 @@ public class LayoutTests extends ActivityInstrumentationTestCase2<MainActivity> 
 
         Rect outRect = new Rect();
         addValues.getDrawingRect(outRect);
-       
+
         assertTrue("Add button off the right of the screen",
                 fullWidth + mainLayoutLocation[0] > outRect.width() + viewLocation[0]);
         assertTrue("Add button off the bottom of the screen",
@@ -62,6 +67,13 @@ public class LayoutTests extends ActivityInstrumentationTestCase2<MainActivity> 
                 fullWidth + mainLayoutLocation[0] > outRect.width() + viewLocation[0]);
         assertTrue("Multiply button off the bottom of the screen", fullHeight
                 + mainLayoutLocation[1] > outRect.height() + viewLocation[1]);
+    }
+
+    public void testTextHintOnEditText() {
+        String hint1 = value1.getHint().toString();
+        String hint2 = value2.getHint().toString();
+        assertEquals("input number integer", hint1);
+        assertEquals("input number integer", hint2);
     }
 
 }

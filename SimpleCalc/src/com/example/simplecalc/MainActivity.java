@@ -35,16 +35,16 @@ public class MainActivity extends Activity {
     private OnClickListener buttonAddClick = new OnClickListener() {
         @Override
         public void onClick(View arg0) {
-                Integer answer = getResultOperation(Operation.ADD);
-                result.setText(answer.toString());
+            String answer = getResultOperation(Operation.ADD);
+            result.setText(answer.toString());
         }
     };
 
     private OnClickListener buttonMultiplyClick = new OnClickListener() {
         @Override
         public void onClick(View v) {
-                Integer answer = getResultOperation(Operation.MULTIPLY);
-                result.setText(answer.toString());
+            String answer = getResultOperation(Operation.MULTIPLY);
+            result.setText(answer);
         }
     };
 
@@ -54,25 +54,36 @@ public class MainActivity extends Activity {
      * @param operation the operation such as: add, multiply
      * @return the result operation as {@link Integer}
      */
-    private Integer getResultOperation(Operation operation) {
-        Integer answer = 0;
+    private String getResultOperation(Operation operation) {
+        String result = null;
+        float answer = 0;
         try {
             int val1 = Integer.parseInt(value1.getText().toString());
             int val2 = Integer.parseInt(value2.getText().toString());
             switch (operation) {
             case ADD:
-                answer = val1 + val2;
+                answer = (float) val1 + (float) val2;
                 break;
             case MULTIPLY:
-                answer = val1 * val2;
+                answer = (float) val1 * (float) val2;
                 break;
             default:
                 break;
             }
+            if (Integer.MIN_VALUE < answer && answer < (float) Integer.MAX_VALUE) {
+                result = String.valueOf((int) answer);
+            } else {
+                result = String
+                        .format("The result must to greater than %s and less than %s. Please check your input number",
+                                Integer.MIN_VALUE, Integer.MAX_VALUE);
+            }
         } catch (NumberFormatException e) {
+            result = String
+                    .format("The input numbers must to greater than %s and less than %s. Please check your input number",
+                            Integer.MIN_VALUE, Integer.MAX_VALUE);
             Log.e(LOG_TAG, "Failed to add numbers ", e);
         }
-        return answer;
+        return result;
     }
 
 }
